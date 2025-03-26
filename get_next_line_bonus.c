@@ -1,19 +1,19 @@
 
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[4096];
 	char	*line;
 
 	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
-	buffer = read_buffer(fd, buffer);
-	if (!buffer)
+	buffer = read_buffer(fd, buffer[fd]);
+	if (!buffer[fd])
 		return (NULL);
-	line = extract_line(buffer);
-	buffer = clean_buffer(buffer);
+	line = extract_line(buffer[fd]);
+	buffer = clean_buffer(buffer[fd]);
 	return (line)
 }
 
