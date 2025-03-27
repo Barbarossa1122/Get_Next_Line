@@ -1,20 +1,30 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fionni <fionni@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/27 15:43:04 by fionni            #+#    #+#             */
+/*   Updated: 2025/03/27 15:43:04 by fionni           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {
 	static char	*buffer[4096];
-	char	*line;
+	char		*line;
 
 	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
-	buffer = read_buffer(fd, buffer[fd]);
+	buffer[fd] = read_buffer(fd, buffer[fd]);
 	if (!buffer[fd])
 		return (NULL);
 	line = extract_line(buffer[fd]);
-	buffer = clean_buffer(buffer[fd]);
-	return (line)
+	buffer[fd] = clean_buffer(buffer[fd]);
+	return (line);
 }
 
 char	*read_buffer(int fd, char *buffer)

@@ -1,11 +1,21 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fionni <fionni@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/27 15:44:02 by fionni            #+#    #+#             */
+/*   Updated: 2025/03/27 15:44:02 by fionni           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "get_next_line.h"
 
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
-	char	*line;
+	char		*line;
 
 	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
@@ -14,7 +24,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = extract_line(buffer);
 	buffer = clean_buffer(buffer);
-	return (line)
+	return (line);
 }
 
 char	*read_buffer(int fd, char *buffer)
